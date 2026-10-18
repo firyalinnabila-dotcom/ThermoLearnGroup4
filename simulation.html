@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Simulation | ThermoLearn
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <div id="site-nav"></div>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <div class="kicker">
+                Interactive Lab
+            </div>
+
+            <h1>
+                Pressure • Volume • Temperature
+            </h1>
+
+            <p>
+
+                Eksperimen langsung.
+                Geser variabel dan lihat
+                bagaimana state sistem berubah
+                secara real-time.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="grid grid-2">
+
+
+                <!-- SIMULATION -->
+
+                <div class="interactive">
+
+                    <div class="eyebrow">
+                        Live simulation
+                    </div>
+
+                    <h2>
+                        Piston–Gas System
+                    </h2>
+
+
+                    <div
+                        class="phase-visual"
+                        style="height:330px;background:linear-gradient(180deg,#fffdf8,#eadcc3)">
+
+                        <div
+                            id="gasLevel"
+                            style="
+                            position:absolute;
+                            left:12%;
+                            right:12%;
+                            bottom:12%;
+                            height:55%;
+                            border:3px solid var(--burgundy-800);
+                            border-top:0;
+                            border-radius:0 0 25px 25px;
+                            background:linear-gradient(
+                            180deg,
+                            rgba(212,175,55,.25),
+                            rgba(107,30,46,.15)
+                            );
+                            transition:.25s;
+                            ">
+                        </div>
+
+
+                        <div
+                            id="simParticles"
+                            style="
+                            position:absolute;
+                            inset:18% 22% 18%;
+                            display:flex;
+                            flex-wrap:wrap;
+                            align-content:center;
+                            justify-content:center;
+                            gap:16px;
+                            ">
+                        </div>
+
+                    </div>
+
+
+                    <!-- VOLUME -->
+
+                    <div class="control">
+
+                        <label>
+
+                            <span>
+                                Volume
+                            </span>
+
+                            <span id="vText">
+                                1.00 m³
+                            </span>
+
+                        </label>
+
+                        <input
+                            id="vSlider"
+                            type="range"
+                            min="0.5"
+                            max="2"
+                            step="0.01"
+                            value="1">
+
+                    </div>
+
+
+                    <!-- TEMPERATURE -->
+
+                    <div class="control">
+
+                        <label>
+
+                            <span>
+                                Temperature
+                            </span>
+
+                            <span id="tText">
+                                300 K
+                            </span>
+
+                        </label>
+
+                        <input
+                            id="tSlider"
+                            type="range"
+                            min="200"
+                            max="600"
+                            step="1"
+                            value="300">
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-dark"
+                        id="resetSim">
+
+                        Reset Simulation
+
+                    </button>
+
+                </div>
+
+
+                <!-- READOUT -->
+
+                <div>
+
+
+                    <div class="grid grid-2">
+
+                        <div class="stat">
+
+                            <b id="pText">
+                                100.0
+                            </b>
+
+                            <span>
+                                Pressure (kPa)
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <b id="eText">
+                                100
+                            </b>
+
+                            <span>
+                                Particle energy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="lesson"
+                        style="margin-top:18px">
+
+                        <h2>
+                            What is happening?
+                        </h2>
+
+                        <p id="simExplain">
+
+                            Pada kondisi awal,
+                            sistem berada pada
+                            P = 100 kPa,
+                            V = 1.00 m³,
+                            T = 300 K.
+
+                        </p>
+
+
+                        <div class="formula">
+
+                            P =
+                            100 ×
+                            (T / 300) ×
+                            (1 / V)
+
+                        </div>
+
+
+                        <div class="result">
+
+                            Model ini adalah visualisasi
+                            edukatif sederhana, bukan
+                            persamaan keadaan lengkap
+                            untuk semua fluida.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div id="site-footer"></div>
+
+
+    <script src="app.js"></script>
+
+
+    <script>
+
+        renderNav("simulation.html");
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const v =
+                    document.getElementById(
+                        "vSlider"
+                    );
+
+                const t =
+                    document.getElementById(
+                        "tSlider"
+                    );
+
+                const p =
+                    document.getElementById(
+                        "pText"
+                    );
+
+                const vt =
+                    document.getElementById(
+                        "vText"
+                    );
+
+                const tt =
+                    document.getElementById(
+                        "tText"
+                    );
+
+                const e =
+                    document.getElementById(
+                        "eText"
+                    );
+
+                const ex =
+                    document.getElementById(
+                        "simExplain"
+                    );
+
+                const gas =
+                    document.getElementById(
+                        "gasLevel"
+                    );
+
+                const parts =
+                    document.getElementById(
+                        "simParticles"
+                    );
+
+
+                // CREATE PARTICLES
+
+                for (
+                    let i = 0;
+                    i < 22;
+                    i++
+                ) {
+
+                    const particle =
+                        document.createElement("i");
+
+                    particle.className =
+                        "particle";
+
+                    particle.style.animationDelay =
+                        (i * 0.07) + "s";
+
+                    parts.appendChild(
+                        particle
+                    );
+
+                }
+
+
+                function calculate() {
+
+                    const V =
+                        Number(v.value);
+
+                    const T =
+                        Number(t.value);
+
+
+                    const P =
+                        100 *
+                        (T / 300) *
+                        (1 / V);
+
+
+                    const energy =
+                        (T / 300) *
+                        100;
+
+
+                    vt.textContent =
+                        V.toFixed(2)
+                        + " m³";
+
+
+                    tt.textContent =
+                        T + " K";
+
+
+                    p.textContent =
+                        P.toFixed(1);
+
+
+                    e.textContent =
+                        energy.toFixed(0);
+
+
+                    gas.style.height =
+                        Math.max(
+                            25,
+                            Math.min(
+                                82,
+                                50 / V
+                            )
+                        ) + "%";
+
+
+                    parts.style.transform =
+                        `scale(${0.75 + T / 500})`;
+
+
+                    ex.textContent =
+
+                        `Saat V = ${V.toFixed(2)} m³ dan T = ${T} K, model menghasilkan P ≈ ${P.toFixed(1)} kPa. Temperatur yang lebih tinggi meningkatkan energi partikel, sedangkan volume yang lebih besar menurunkan pressure dalam model ini.`;
+
+
+                    markVisited(
+                        "simulation"
+                    );
+
+                }
+
+
+                v.addEventListener(
+                    "input",
+                    calculate
+                );
+
+
+                t.addEventListener(
+                    "input",
+                    calculate
+                );
+
+
+                document
+                    .getElementById(
+                        "resetSim"
+                    )
+                    .onclick = () => {
+
+                        v.value = 1;
+
+                        t.value = 300;
+
+                        calculate();
+
+                    };
+
+
+                calculate();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

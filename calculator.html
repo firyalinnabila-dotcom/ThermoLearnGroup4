@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Calculator | ThermoLearn
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <div id="site-nav"></div>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <div class="kicker">
+                Interactive Calculator
+            </div>
+
+            <h1>
+                First Law Energy Lab.
+            </h1>
+
+            <p>
+
+                Masukkan heat dan work.
+                ThermoLearn menghitung perubahan
+                internal energy sekaligus
+                menunjukkan langkahnya.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+
+            <div class="grid grid-2">
+
+
+                <!-- CALCULATOR -->
+
+                <div class="interactive">
+
+                    <div class="control">
+
+                        <label>
+
+                            <span>
+                                Heat Q (kJ)
+                            </span>
+
+                            <span>
+                                Energy in/out
+                            </span>
+
+                        </label>
+
+                        <input
+                            id="qInput"
+                            type="number"
+                            value="500">
+
+                    </div>
+
+
+                    <div class="control">
+
+                        <label>
+
+                            <span>
+                                Work W (kJ)
+                            </span>
+
+                            <span>
+                                Work by system
+                            </span>
+
+                        </label>
+
+                        <input
+                            id="wInput"
+                            type="number"
+                            value="200">
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-gold"
+                        id="calculate">
+
+                        Calculate ΔU →
+
+                    </button>
+
+
+                    <div class="result">
+
+                        <div
+                            class="readout"
+                            id="du">
+
+                            300 kJ
+
+                        </div>
+
+                        <p id="steps">
+
+                            ΔU = Q − W
+                            =
+                            500 − 200
+                            =
+                            300 kJ
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPLANATION -->
+
+                <div class="card">
+
+                    <div class="eyebrow">
+                        First Law
+                    </div>
+
+                    <h2>
+                        Energy is conserved.
+                    </h2>
+
+
+                    <div class="formula">
+
+                        ΔU = Q − W
+
+                    </div>
+
+
+                    <p>
+
+                        Konvensi di sini:
+                        Q positif ketika heat
+                        masuk ke system,
+                        W positif ketika system
+                        melakukan work ke surroundings.
+
+                    </p>
+
+
+                    <div
+                        class="result"
+                        id="interpret">
+
+                        Energi internal bertambah.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCENARIOS -->
+
+            <div
+                class="lesson"
+                style="margin-top:20px">
+
+                <h2>
+                    Try these scenarios
+                </h2>
+
+
+                <div class="grid grid-3">
+
+
+                    <button
+                        class="card"
+                        onclick="
+                        setCalc(500,200)
+                        ">
+
+                        <h3>
+                            Heating
+                        </h3>
+
+                        <p>
+                            Q = 500
+                            <br>
+                            W = 200
+                        </p>
+
+                    </button>
+
+
+                    <button
+                        class="card"
+                        onclick="
+                        setCalc(1000,400)
+                        ">
+
+                        <h3>
+                            Expansion
+                        </h3>
+
+                        <p>
+                            Q = 1000
+                            <br>
+                            W = 400
+                        </p>
+
+                    </button>
+
+
+                    <button
+                        class="card"
+                        onclick="
+                        setCalc(200,500)
+                        ">
+
+                        <h3>
+                            Work dominates
+                        </h3>
+
+                        <p>
+                            Q = 200
+                            <br>
+                            W = 500
+                        </p>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <div id="site-footer"></div>
+
+
+    <script src="app.js"></script>
+
+
+    <script>
+
+        function setCalc(Q, W) {
+
+            document.getElementById(
+                "qInput"
+            ).value = Q;
+
+            document.getElementById(
+                "wInput"
+            ).value = W;
+
+            document.getElementById(
+                "calculate"
+            ).click();
+
+        }
+
+
+        renderNav("calculator.html");
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                document
+                    .getElementById(
+                        "calculate"
+                    )
+                    .onclick = () => {
+
+                        const Q =
+                            Number(
+                                document
+                                    .getElementById(
+                                        "qInput"
+                                    )
+                                    .value
+                            ) || 0;
+
+
+                        const W =
+                            Number(
+                                document
+                                    .getElementById(
+                                        "wInput"
+                                    )
+                                    .value
+                            ) || 0;
+
+
+                        const U =
+                            Q - W;
+
+
+                        document
+                            .getElementById(
+                                "du"
+                            )
+                            .textContent =
+                            U + " kJ";
+
+
+                        document
+                            .getElementById(
+                                "steps"
+                            )
+                            .textContent =
+                            `ΔU = Q − W = ${Q} − ${W} = ${U} kJ`;
+
+
+                        document
+                            .getElementById(
+                                "interpret"
+                            )
+                            .textContent =
+
+                            U > 0
+
+                            ? "Energi internal bertambah."
+
+                            : U < 0
+
+                            ? "Energi internal berkurang."
+
+                            : "Energi internal tidak berubah.";
+
+
+                        markVisited(
+                            "calculator"
+                        );
+
+                    };
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

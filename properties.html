@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Properties | ThermoLearn
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <div id="site-nav"></div>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <div class="kicker">
+                Module 02 • Properties
+            </div>
+
+            <h1>
+                Properties of Pure Substances.
+            </h1>
+
+            <p>
+
+                Eksplorasi liquid, vapor,
+                mixture, dan quality
+                secara visual.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+
+            <div class="grid grid-2">
+
+
+                <!-- QUALITY -->
+
+                <div class="interactive">
+
+                    <div class="eyebrow">
+                        Interactive quality
+                    </div>
+
+                    <h2>
+                        Vapor Quality
+                    </h2>
+
+                    <p>
+
+                        Quality <b>x</b> menunjukkan
+                        fraksi massa vapor pada
+                        saturated mixture.
+
+                    </p>
+
+
+                    <div class="control">
+
+                        <label>
+
+                            <span>
+                                Quality x
+                            </span>
+
+                            <span id="qVal">
+                                0.50
+                            </span>
+
+                        </label>
+
+                        <input
+                            id="qualitySlider"
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value="0.5">
+
+                    </div>
+
+
+                    <div class="grid grid-2">
+
+                        <div class="card">
+
+                            <h3 id="liqPct">
+                                50%
+                            </h3>
+
+                            <p>
+                                Liquid fraction
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <h3 id="vapPct">
+                                50%
+                            </h3>
+
+                            <p>
+                                Vapor fraction
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="formula">
+
+                        x =
+                        m<sub>vapor</sub>
+                        /
+                        m<sub>total</sub>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHASE EXPLORER -->
+
+                <div class="card">
+
+                    <div class="eyebrow">
+                        Phase explorer
+                    </div>
+
+                    <h2 id="phaseTitle">
+                        Saturated Mixture
+                    </h2>
+
+                    <p id="phaseDesc">
+
+                        Liquid dan vapor berada
+                        bersama dalam kondisi jenuh.
+
+                    </p>
+
+
+                    <div class="phase-buttons">
+
+                        <button
+                            class="phase-btn"
+                            data-phase="compressed">
+
+                            Compressed Liquid
+
+                        </button>
+
+                        <button
+                            class="phase-btn"
+                            data-phase="satliq">
+
+                            Saturated Liquid
+
+                        </button>
+
+                        <button
+                            class="phase-btn active"
+                            data-phase="mix">
+
+                            Saturated Mixture
+
+                        </button>
+
+                        <button
+                            class="phase-btn"
+                            data-phase="satvap">
+
+                            Saturated Vapor
+
+                        </button>
+
+                        <button
+                            class="phase-btn"
+                            data-phase="super">
+
+                            Superheated Vapor
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="phase-visual">
+
+                        <div
+                            class="liquid"
+                            id="liquidVisual">
+                        </div>
+
+                        <div
+                            class="phase-label"
+                            id="phaseLabel">
+
+                            50% mixture
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="result"
+                        id="phaseResult">
+
+                        Quality:
+                        0.50
+                        •
+                        Dua fase
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div
+                class="lesson"
+                style="margin-top:20px">
+
+                <h2>
+                    Key Properties
+                </h2>
+
+                <div class="table-wrap">
+
+                    <table class="table">
+
+                        <tr>
+
+                            <th>
+                                Symbol
+                            </th>
+
+                            <th>
+                                Property
+                            </th>
+
+                            <th>
+                                Meaning
+                            </th>
+
+                            <th>
+                                Unit
+                            </th>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>P</td>
+
+                            <td>
+                                Pressure
+                            </td>
+
+                            <td>
+                                Force per unit area
+                            </td>
+
+                            <td>
+                                kPa
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>T</td>
+
+                            <td>
+                                Temperature
+                            </td>
+
+                            <td>
+                                Ukuran keadaan termal
+                            </td>
+
+                            <td>
+                                K
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>v</td>
+
+                            <td>
+                                Specific volume
+                            </td>
+
+                            <td>
+                                Volume per unit mass
+                            </td>
+
+                            <td>
+                                m³/kg
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>u</td>
+
+                            <td>
+                                Internal energy
+                            </td>
+
+                            <td>
+                                Energi mikroskopik
+                                dalam sistem
+                            </td>
+
+                            <td>
+                                kJ/kg
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>h</td>
+
+                            <td>
+                                Enthalpy
+                            </td>
+
+                            <td>
+                                h = u + Pv
+                            </td>
+
+                            <td>
+                                kJ/kg
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>s</td>
+
+                            <td>
+                                Entropy
+                            </td>
+
+                            <td>
+                                Property untuk
+                                analisis energi
+                            </td>
+
+                            <td>
+                                kJ/kg·K
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <div id="site-footer"></div>
+
+
+    <script src="app.js"></script>
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const slider =
+                    document.getElementById(
+                        "qualitySlider"
+                    );
+
+                const q =
+                    document.getElementById(
+                        "qVal"
+                    );
+
+                const lp =
+                    document.getElementById(
+                        "liqPct"
+                    );
+
+                const vp =
+                    document.getElementById(
+                        "vapPct"
+                    );
+
+                let current = "mix";
+
+
+                function updateQuality() {
+
+                    const x =
+                        Number(slider.value);
+
+                    q.textContent =
+                        x.toFixed(2);
+
+                    lp.textContent =
+                        Math.round(
+                            (1 - x) * 100
+                        ) + "%";
+
+                    vp.textContent =
+                        Math.round(
+                            x * 100
+                        ) + "%";
+
+
+                    if (current === "mix") {
+
+                        document
+                            .getElementById(
+                                "liquidVisual"
+                            )
+                            .style.height =
+                            ((1 - x) * 100) + "%";
+
+                        document
+                            .getElementById(
+                                "phaseLabel"
+                            )
+                            .textContent =
+                            Math.round(x * 100)
+                            + "% vapor";
+
+                    }
+
+                    markVisited(
+                        "properties"
+                    );
+
+                }
+
+
+                slider.addEventListener(
+                    "input",
+                    updateQuality
+                );
+
+
+                const data = {
+
+                    compressed: [
+                        "Compressed Liquid",
+
+                        "Temperatur berada di bawah kondisi saturasi pada tekanan tersebut.",
+
+                        "< 0",
+
+                        "Compressed liquid"
+                    ],
+
+                    satliq: [
+                        "Saturated Liquid",
+
+                        "Cairan tepat berada pada kondisi jenuh.",
+
+                        "0",
+
+                        "Saturated liquid"
+                    ],
+
+                    mix: [
+                        "Saturated Mixture",
+
+                        "Liquid dan vapor coexist dalam dua fase.",
+
+                        "0–1",
+
+                        "Two-phase mixture"
+                    ],
+
+                    satvap: [
+                        "Saturated Vapor",
+
+                        "Vapor tepat berada pada kondisi jenuh.",
+
+                        "1",
+
+                        "Saturated vapor"
+                    ],
+
+                    super: [
+                        "Superheated Vapor",
+
+                        "Vapor berada di atas temperatur saturasi. Quality tidak didefinisikan di region ini.",
+
+                        "Not defined",
+
+                        "Superheated vapor"
+                    ]
+
+                };
+
+
+                document
+                    .querySelectorAll(
+                        "[data-phase]"
+                    )
+                    .forEach(button => {
+
+                        button.onclick = () => {
+
+                            current =
+                                button.dataset.phase;
+
+
+                            document
+                                .querySelectorAll(
+                                    "[data-phase]"
+                                )
+                                .forEach(
+                                    b =>
+                                        b.classList
+                                            .remove(
+                                                "active"
+                                            )
+                                );
+
+
+                            button.classList
+                                .add("active");
+
+
+                            const d =
+                                data[current];
+
+
+                            document
+                                .getElementById(
+                                    "phaseTitle"
+                                )
+                                .textContent =
+                                d[0];
+
+
+                            document
+                                .getElementById(
+                                    "phaseDesc"
+                                )
+                                .textContent =
+                                d[1];
+
+
+                            document
+                                .getElementById(
+                                    "phaseResult"
+                                )
+                                .textContent =
+                                "Quality: "
+                                + d[2]
+                                + " • "
+                                + d[3];
+
+
+                            const liquid =
+                                document
+                                    .getElementById(
+                                        "liquidVisual"
+                                    );
+
+
+                            const label =
+                                document
+                                    .getElementById(
+                                        "phaseLabel"
+                                    );
+
+
+                            if (
+                                current ===
+                                "compressed"
+                            ) {
+
+                                liquid.style.height =
+                                    "88%";
+
+                                label.textContent =
+                                    "Compressed Liquid";
+
+                            }
+
+                            else if (
+                                current ===
+                                "satliq"
+                            ) {
+
+                                liquid.style.height =
+                                    "100%";
+
+                                label.textContent =
+                                    "Saturated Liquid";
+
+                            }
+
+                            else if (
+                                current ===
+                                "mix"
+                            ) {
+
+                                updateQuality();
+
+                            }
+
+                            else if (
+                                current ===
+                                "satvap"
+                            ) {
+
+                                liquid.style.height =
+                                    "0%";
+
+                                label.textContent =
+                                    "Saturated Vapor";
+
+                            }
+
+                            else {
+
+                                liquid.style.height =
+                                    "0%";
+
+                                label.textContent =
+                                    "Superheated Vapor";
+
+                            }
+
+                        };
+
+                    });
+
+
+                updateQuality();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fundamental Concepts | ThermoLearn</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8fc;
+            color: #172033;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 75px;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 8%;
+
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #2563eb;
+        }
+
+        /* ================= HERO ================= */
+
+        .lesson-hero {
+            background: linear-gradient(
+                135deg,
+                #eff6ff,
+                #ffffff
+            );
+
+            padding: 80px 8%;
+        }
+
+        .lesson-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .breadcrumb a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .lesson-hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .lesson-hero h1 span {
+            color: #2563eb;
+        }
+
+        .lesson-hero p {
+            color: #64748b;
+            font-size: 18px;
+            max-width: 700px;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .content {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        .lesson-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.04);
+        }
+
+        .section-number {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .lesson-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-section h3 {
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .lesson-section p {
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        /* ================= OBJECTIVES ================= */
+
+        .objectives {
+            background: #eff6ff;
+            border: none;
+        }
+
+        .objectives ul {
+            list-style: none;
+        }
+
+        .objectives li {
+            background: white;
+            margin-bottom: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
+
+        .check {
+            color: #2563eb;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* ================= SYSTEM DIAGRAM ================= */
+
+        .system-diagram {
+            background: #f8fafc;
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .surroundings {
+            border: 3px dashed #94a3b8;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .system-box {
+            background: #2563eb;
+            color: white;
+            padding: 35px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .boundary-label {
+            color: #64748b;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* ================= SYSTEM TYPES ================= */
+
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .system-card {
+            border: 1px solid #e5e7eb;
+            padding: 25px;
+            border-radius: 15px;
+            background: #f8fafc;
+        }
+
+        .system-card h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        .system-card .icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .system-card p {
+            font-size: 14px;
+        }
+
+        /* ================= PROPERTY ================= *//* ================= INTERACTIVE SYSTEM EXPLORER ================= */
+
+.interactive-explorer {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.system-buttons {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.system-button {
+    padding: 12px 20px;
+    border: 1px solid #dbe3ef;
+    background: #f8fafc;
+    color: #475569;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.system-button:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.system-button.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.interactive-display {
+    background: #f8fafc;
+    border-radius: 18px;
+    padding: 35px;
+    text-align: center;
+}
+
+.interactive-diagram {
+    border: 3px dashed #94a3b8;
+    border-radius: 18px;
+    padding: 35px;
+    margin-bottom: 25px;
+}
+
+.interactive-system-box {
+    max-width: 350px;
+    margin: auto;
+    padding: 35px 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.energy-flow,
+.mass-flow {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.flow-allowed {
+    color: #16a34a;
+}
+
+.flow-blocked {
+    color: #dc2626;
+}
+
+.interactive-display h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.interactive-display p {
+    color: #64748b;
+    max-width: 650px;
+    margin: auto;
+}
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .property-card {
+            padding: 25px;
+            border-radius: 15px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .property-card h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        /* ================= FORMULA ================= */
+
+        .formula-box {
+            background: #172033;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .formula {
+            font-size: 32px;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+
+        /* ================= TAKEAWAYS ================= */
+
+        .takeaways {
+            background: #172033;
+            color: white;
+        }
+
+        .takeaways h2 {
+            color: white;
+        }
+
+        .takeaways ul {
+            padding-left: 20px;
+        }
+
+        .takeaways li {
+            margin-bottom: 10px;
+            color: #dbeafe;
+        }
+
+        /* ================= BUTTON ================= *//* ================= QUIZ ================= */
+
+.quiz-section {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.quiz-progress {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.quiz-score {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.progress-fill {
+    width: 20%;
+    height: 100%;
+    background: #2563eb;
+    transition: 0.3s;
+}
+
+.question {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.answer-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+    border: 1px solid #dbe3ef;
+    background: #f8fafc;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.answer-option:hover {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.answer-option.selected {
+    background: #dbeafe;
+    border-color: #2563eb;
+    color: #1e3a8a;
+    font-weight: bold;
+}
+
+.answer-option.correct {
+    background: #dcfce7;
+    border-color: #16a34a;
+    color: #166534;
+}
+
+.answer-option.wrong {
+    background: #fee2e2;
+    border-color: #dc2626;
+    color: #991b1b;
+}
+
+.quiz-feedback {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+}
+
+.feedback-correct {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.feedback-wrong {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.quiz-button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.quiz-button:hover {
+    background: #1d4ed8;
+}
+
+.quiz-result {
+    display: none;
+    text-align: center;
+    padding: 30px;
+}
+
+.quiz-result h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.final-score {
+    font-size: 48px;
+    color: #2563eb;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+
+    .quiz-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #172033;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .system-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-hero h1 {
+                font-size: 38px;
+            }
+
+            .lesson-section {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+    <div class="logo">
+        ThermoLearn
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="learn.html">Learn</a>
+        </li>
+
+        <li>
+            <a href="simulation.html">Simulation</a>
+        </li>
+
+        <li>
+            <a href="calculator.html">Calculator</a>
+        </li>
+
+        <li>
+            <a href="quiz.html">Quiz</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+    <!-- LESSON HERO -->
+
+    <section class="lesson-hero">
+
+        <div class="lesson-container">
+
+            <div class="breadcrumb">
+
+                <a href="learn.html">
+                    Learn
+                </a>
+
+                →
+
+                Fundamental Concepts
+
+            </div>
+
+            <h1>
+
+                Fundamental
+                <span>Concepts</span>
+
+            </h1>
+
+            <p>
+
+                Memahami bahasa dasar thermodynamics
+                sebelum mempelajari hukum, proses,
+                dan siklus thermodynamics.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+
+        <!-- OBJECTIVES -->
+
+        <section class="lesson-section objectives">
+
+            <div class="section-number">
+                BEFORE YOU START
+            </div>
+
+            <h2>
+                Learning Objectives
+            </h2>
+
+            <p>
+                Setelah mempelajari materi ini,
+                kamu diharapkan mampu:
+            </p>
+
+            <ul>
+
+                <li>
+                    <span class="check">✓</span>
+                    Menjelaskan pengertian thermodynamics.
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Membedakan system dan surroundings.
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Menjelaskan konsep boundary.
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Membedakan open, closed, dan isolated system.
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Membedakan intensive dan extensive properties.
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Menjelaskan state dan equilibrium.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- SECTION 1 -->
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                01
+            </div>
+
+            <h2>
+                What is Thermodynamics?
+            </h2>
+
+            <p>
+
+                Thermodynamics adalah cabang ilmu yang
+                mempelajari hubungan antara energi,
+                panas, kerja, dan perubahan keadaan
+                suatu sistem.
+
+            </p>
+
+            <p>
+
+                Dalam thermodynamics, kita tidak hanya
+                mempelajari bagaimana energi berpindah,
+                tetapi juga bagaimana energi tersebut
+                berubah dari satu bentuk ke bentuk lainnya.
+
+            </p>
+
+            <div class="formula-box">
+
+                <div class="formula">
+                    Energy → Transfer → Transformation
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 2 -->
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                02
+            </div>
+
+            <h2>
+                System & Surroundings
+            </h2>
+
+            <p>
+
+                Dalam thermodynamics, kita terlebih dahulu
+                menentukan bagian mana yang sedang kita
+                analisis. Bagian tersebut disebut
+                <strong>system</strong>.
+
+            </p>
+
+            <p>
+
+                Segala sesuatu yang berada di luar system
+                disebut <strong>surroundings</strong>.
+
+            </p>
+
+
+            <div class="system-diagram">
+
+                <div class="surroundings">
+
+                    <div class="system-box">
+
+                        SYSTEM
+
+                    </div>
+
+                    <div class="boundary-label">
+
+                        Boundary
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Surroundings
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 3 -->
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                03
+            </div>
+
+            <h2>
+                Types of Thermodynamic Systems
+            </h2>
+
+            <p>
+
+                Berdasarkan perpindahan massa dan energi,
+                system dapat diklasifikasikan menjadi
+                tiga jenis utama.
+
+            </p>
+
+
+            <div class="system-grid">
+
+
+                <div class="system-card">
+
+                    <div class="icon">
+                        🌬️
+                    </div>
+
+                    <h3>
+                        Open System
+                    </h3>
+
+                    <p>
+
+                        Massa dan energi dapat melewati
+                        boundary system.
+
+                    </p>
+
+                    <strong>
+                        Example:
+                    </strong>
+
+                    <p>
+                        Turbine, compressor, pump.
+                    </p>
+
+                </div>
+
+
+                <div class="system-card">
+
+                    <div class="icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        Closed System
+                    </h3>
+
+                    <p>
+
+                        Massa tidak dapat melewati boundary,
+                        tetapi energi dapat berpindah.
+
+                    </p>
+
+                    <strong>
+                        Example:
+                    </strong>
+
+                    <p>
+                        Piston-cylinder system.
+                    </p>
+
+                </div>
+
+
+                <div class="system-card">
+
+                    <div class="icon">
+                        ❄️
+                    </div>
+
+                    <h3>
+                        Isolated System
+                    </h3>
+
+                    <p>
+
+                        Tidak ada massa maupun energi
+                        yang melewati boundary.
+
+                    </p>
+
+                    <strong>
+                        Example:
+                    </strong>
+
+                    <p>
+                        Idealized thermos.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 4 --> <!-- INTERACTIVE SYSTEM EXPLORER -->
+
+<section class="interactive-explorer">
+
+    <div class="section-number">
+        INTERACTIVE EXPLORER
+    </div>
+
+    <h2>
+        Explore Thermodynamic Systems
+    </h2>
+
+    <p>
+        Klik jenis system di bawah ini untuk melihat
+        bagaimana massa dan energi dapat melewati boundary.
+    </p>
+
+
+    <div class="system-buttons">
+
+        <button
+            class="system-button active"
+            onclick="showSystem('open')"
+        >
+            Open System
+        </button>
+
+        <button
+            class="system-button"
+            onclick="showSystem('closed')"
+        >
+            Closed System
+        </button>
+
+        <button
+            class="system-button"
+            onclick="showSystem('isolated')"
+        >
+            Isolated System
+        </button>
+
+    </div>
+
+
+    <div class="interactive-display">
+
+        <div class="interactive-diagram">
+
+            <div class="interactive-system-box">
+
+                SYSTEM
+
+            </div>
+
+
+            <div
+                id="massFlow"
+                class="mass-flow flow-allowed"
+            >
+                → MASS CAN CROSS
+            </div>
+
+
+            <div
+                id="energyFlow"
+                class="energy-flow flow-allowed"
+            >
+                → ENERGY CAN CROSS
+            </div>
+
+        </div>
+
+
+        <h3 id="systemTitle">
+            Open System
+        </h3>
+
+
+        <p id="systemDescription">
+
+            Massa dan energi dapat melewati
+            boundary system.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                04
+            </div>
+
+            <h2>
+                Properties of a System
+            </h2>
+
+            <p>
+
+                Property adalah karakteristik yang dapat
+                digunakan untuk menggambarkan keadaan
+                suatu system.
+
+            </p>
+
+            <div class="property-grid">
+
+
+                <div class="property-card">
+
+                    <h3>
+                        Intensive Property
+                    </h3>
+
+                    <p>
+
+                        Tidak bergantung pada jumlah
+                        massa dalam system.
+
+                    </p>
+
+                    <p>
+                        Examples:
+                        Temperature, pressure,
+                        density.
+
+                    </p>
+
+                </div>
+
+
+                <div class="property-card">
+
+                    <h3>
+                        Extensive Property
+                    </h3>
+
+                    <p>
+
+                        Bergantung pada jumlah massa
+                        dalam system.
+
+                    </p>
+
+                    <p>
+                        Examples:
+                        Mass, volume, total energy.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 5 -->
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                05
+            </div>
+
+            <h2>
+                State & Equilibrium
+            </h2>
+
+            <p>
+
+                <strong>State</strong> adalah kondisi
+                suatu system yang dapat dijelaskan
+                menggunakan sejumlah property tertentu.
+
+            </p>
+
+            <p>
+
+                Misalnya, keadaan suatu gas dapat
+                dijelaskan melalui pressure, temperature,
+                dan volume.
+
+            </p>
+
+            <h3>
+                Thermodynamic Equilibrium
+            </h3>
+
+            <p>
+
+                Suatu system berada dalam equilibrium
+                ketika tidak terdapat perubahan spontan
+                pada kondisi makroskopiknya.
+
+            </p>
+
+        </section>
+
+
+        <!-- SECTION 6 -->
+
+        <section class="lesson-section">
+
+            <div class="section-number">
+                06
+            </div>
+
+            <h2>
+                Thermodynamic Process
+            </h2>
+
+            <p>
+
+                Thermodynamic process adalah perubahan
+                suatu system dari satu state ke state
+                lainnya.
+
+            </p>
+
+            <p>
+
+                Contohnya adalah proses pemanasan gas,
+                ekspansi gas, kompresi gas, dan perubahan
+                fase suatu zat.
+
+            </p>
+
+        </section>
+
+
+        <!-- TAKEAWAYS --><!-- ================= QUIZ ================= -->
+
+<section class="quiz-section">
+
+    <div class="section-number">
+        KNOWLEDGE CHECK
+    </div>
+
+    <div class="quiz-header">
+
+        <div class="quiz-progress" id="quizProgress">
+            Question 1 of 5
+        </div>
+
+        <div class="quiz-score" id="quizScore">
+            Score: 0
+        </div>
+
+    </div>
+
+
+    <div class="progress-bar">
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+    </div>
+
+
+    <div id="quizContainer">
+
+        <div
+            class="question"
+            id="questionText"
+        ></div>
+
+
+        <div id="answerContainer"></div>
+
+
+        <div
+            class="quiz-feedback"
+            id="quizFeedback"
+        ></div>
+
+
+        <button
+            class="quiz-button"
+            id="quizButton"
+            onclick="checkAnswer()"
+        >
+            Check Answer
+        </button>
+
+    </div>
+
+
+    <div
+        class="quiz-result"
+        id="quizResult"
+    >
+
+        <h2>
+            Quiz Complete!
+        </h2>
+
+        <p>
+            Kamu telah menyelesaikan
+            Fundamental Concepts Quiz.
+        </p>
+
+        <div
+            class="final-score"
+            id="finalScore"
+        >
+            0 / 5
+        </div>
+
+        <p id="resultMessage"></p>
+
+        <button
+            class="quiz-button"
+            onclick="restartQuiz()"
+        >
+            Try Again
+        </button>
+
+    </div>
+
+</section>
+
+        <section class="lesson-section takeaways">
+
+            <div class="section-number">
+                SUMMARY
+            </div>
+
+            <h2>
+                Key Takeaways
+            </h2>
+
+            <ul>
+
+                <li>
+                    Thermodynamics mempelajari energi,
+                    heat, work, dan perubahan keadaan.
+                </li>
+
+                <li>
+                    System adalah bagian yang dianalisis,
+                    sedangkan surroundings berada di luar system.
+                </li>
+
+                <li>
+                    System dapat berupa open, closed,
+                    atau isolated system.
+                </li>
+
+                <li>
+                    Properties dapat diklasifikasikan
+                    menjadi intensive dan extensive.
+                </li>
+
+                <li>
+                    State menggambarkan kondisi suatu system.
+                </li>
+
+                <li>
+                    Process menggambarkan perubahan
+                    dari satu state ke state lainnya.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="navigation-buttons">
+
+            <a
+                href="learn.html"
+                class="btn btn-secondary"
+            >
+                ← Back to Modules
+            </a>
+
+            <a
+                href="#"
+                class="btn btn-primary"
+            >
+                Take the Quiz →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ThermoLearn |
+            Interactive Thermodynamics Learning
+        </p>
+
+    </footer>
+
+
+<script>
+
+/* ================= QUIZ DATA ================= */
+
+const quizQuestions = [
+
+    {
+        question:
+            "Which type of system allows both mass and energy to cross its boundary?",
+
+        answers: [
+            "Closed System",
+            "Isolated System",
+            "Open System",
+            "None of the above"
+        ],
+
+        correct: 2,
+
+        explanation:
+            "An open system allows both mass and energy to cross its boundary."
+    },
+
+
+    {
+        question:
+            "Which property does NOT depend on the amount of matter?",
+
+        answers: [
+            "Mass",
+            "Volume",
+            "Temperature",
+            "Total Energy"
+        ],
+
+        correct: 2,
+
+        explanation:
+            "Temperature is an intensive property, so it does not depend on the amount of matter."
+    },
+
+
+    {
+        question:
+            "What is the region selected for thermodynamic analysis called?",
+
+        answers: [
+            "Surroundings",
+            "System",
+            "Environment",
+            "Boundary"
+        ],
+
+        correct: 1,
+
+        explanation:
+            "The system is the region selected for thermodynamic analysis."
+    },
+
+
+    {
+        question:
+            "Which system does not allow mass or energy to cross its boundary?",
+
+        answers: [
+            "Open System",
+            "Closed System",
+            "Isolated System",
+            "Control Volume"
+        ],
+
+        correct: 2,
+
+        explanation:
+            "An isolated system does not exchange mass or energy with its surroundings."
+    },
+
+
+    {
+        question:
+            "Which of the following is an extensive property?",
+
+        answers: [
+            "Temperature",
+            "Pressure",
+            "Density",
+            "Volume"
+        ],
+
+        correct: 3,
+
+        explanation:
+            "Volume is an extensive property because it depends on the amount of matter."
+    }
+
+];
+
+
+/* ================= QUIZ VARIABLES ================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let selectedAnswer = null;
+
+
+/* ================= LOAD QUESTION ================= */
+
+function loadQuestion() {
+
+    const question =
+        quizQuestions[currentQuestion];
+
+
+    document.getElementById(
+        "quizProgress"
+    ).textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        quizQuestions.length;
+
+
+    document.getElementById(
+        "quizScore"
+    ).textContent =
+        "Score: " + score;
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        ((currentQuestion + 1) /
+        quizQuestions.length * 100) + "%";
+
+
+    document.getElementById(
+        "questionText"
+    ).textContent =
+        question.question;
+
+
+    const answerContainer =
+        document.getElementById(
+            "answerContainer"
+        );
+
+
+    answerContainer.innerHTML = "";
+
+
+    question.answers.forEach(
+        function(answer, index) {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "answer-option";
+
+            button.textContent =
+                answer;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        index,
+                        button
+                    );
+
+                };
+
+
+            answerContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "quizFeedback"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "quizButton"
+    ).textContent =
+        "Check Answer";
+
+
+    selectedAnswer = null;
+
+}
+
+
+/* ================= SELECT ANSWER ================= */
+
+function selectAnswer(index, button) {
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer-option"
+        );
+
+
+    buttons.forEach(
+        function(item) {
+
+            item.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    button.classList.add(
+        "selected"
+    );
+
+
+    selectedAnswer = index;
+
+}
+
+
+/* ================= CHECK ANSWER ================= */
+
+function checkAnswer() {
+
+    if (selectedAnswer === null) {
+
+        alert(
+            "Please select an answer first."
+        );
+
+        return;
+
+    }
+
+
+    const question =
+        quizQuestions[currentQuestion];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer-option"
+        );
+
+
+    const feedback =
+        document.getElementById(
+            "quizFeedback"
+        );
+
+
+    buttons.forEach(
+        function(button) {
+
+            button.disabled = true;
+
+        }
+    );
+
+
+    if (
+        selectedAnswer ===
+        question.correct
+    ) {
+
+        score++;
+
+
+        buttons[
+            selectedAnswer
+        ].classList.add(
+            "correct"
+        );
+
+
+        feedback.textContent =
+            "✓ Correct! " +
+            question.explanation;
+
+
+        feedback.className =
+            "quiz-feedback feedback-correct";
+
+
+        feedback.style.display =
+            "block";
+
+    }
+
+    else {
+
+        buttons[
+            selectedAnswer
+        ].classList.add(
+            "wrong"
+        );
+
+
+        buttons[
+            question.correct
+        ].classList.add(
+            "correct"
+        );
+
+
+        feedback.textContent =
+            "✕ Not quite. " +
+            question.explanation;
+
+
+        feedback.className =
+            "quiz-feedback feedback-wrong";
+
+
+        feedback.style.display =
+            "block";
+
+    }
+
+
+    document.getElementById(
+        "quizScore"
+    ).textContent =
+        "Score: " + score;
+
+
+    const quizButton =
+        document.getElementById(
+            "quizButton"
+        );
+
+
+    if (
+        currentQuestion <
+        quizQuestions.length - 1
+    ) {
+
+        quizButton.textContent =
+            "Next Question →";
+
+
+        quizButton.onclick =
+            function() {
+
+                currentQuestion++;
+
+                loadQuestion();
+
+                quizButton.onclick =
+                    checkAnswer;
+
+            };
+
+    }
+
+    else {
+
+        quizButton.textContent =
+            "Finish Quiz";
+
+
+        quizButton.onclick =
+            finishQuiz;
+
+    }
+
+}
+
+
+/* ================= FINISH QUIZ ================= */
+
+function finishQuiz() {
+
+    document.getElementById(
+        "quizContainer"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "quizResult"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        score +
+        " / " +
+        quizQuestions.length;
+
+
+    const percentage =
+        (
+            score /
+            quizQuestions.length
+        ) * 100;
+
+
+    let message = "";
+
+
+    if (percentage === 100) {
+
+        message =
+            "Excellent! Kamu menguasai fundamental concepts dengan sangat baik.";
+
+    }
+
+    else if (percentage >= 80) {
+
+        message =
+            "Great job! Pemahaman kamu sudah sangat baik.";
+
+    }
+
+    else if (percentage >= 60) {
+
+        message =
+            "Good effort! Coba review kembali beberapa konsep.";
+
+    }
+
+    else {
+
+        message =
+            "Keep learning! Review kembali materi lalu coba quiz lagi.";
+
+    }
+
+
+    document.getElementById(
+        "resultMessage"
+    ).textContent =
+        message;
+
+}
+
+
+/* ================= RESTART QUIZ ================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    selectedAnswer = null;
+
+
+    document.getElementById(
+        "quizContainer"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "quizResult"
+    ).style.display =
+        "none";
+
+
+    const quizButton =
+        document.getElementById(
+            "quizButton"
+        );
+
+
+    quizButton.onclick =
+        checkAnswer;
+
+
+    loadQuestion();
+
+}
+
+
+/* ================= START QUIZ ================= */
+
+loadQuestion();
+
+</script></body><script>
+
+function showSystem(type) {
+
+    const title = document.getElementById("systemTitle");
+    const description = document.getElementById("systemDescription");
+
+    const massFlow = document.getElementById("massFlow");
+    const energyFlow = document.getElementById("energyFlow");
+
+    const buttons = document.querySelectorAll(".system-button");
+
+
+    /* Reset active button */
+
+    buttons.forEach(function(button) {
+
+        button.classList.remove("active");
+
+    });
+
+
+    /* OPEN SYSTEM */
+
+    if (type === "open") {
+
+        buttons[0].classList.add("active");
+
+        title.textContent = "Open System";
+
+        description.textContent =
+            "Massa dan energi dapat melewati boundary system. Contohnya adalah turbine, compressor, dan pump.";
+
+        massFlow.textContent =
+            "→ MASS CAN CROSS";
+
+        massFlow.className =
+            "mass-flow flow-allowed";
+
+        energyFlow.textContent =
+            "→ ENERGY CAN CROSS";
+
+        energyFlow.className =
+            "energy-flow flow-allowed";
+    }
+
+
+    /* CLOSED SYSTEM */
+
+    else if (type === "closed") {
+
+        buttons[1].classList.add("active");
+
+        title.textContent = "Closed System";
+
+        description.textContent =
+            "Massa tidak dapat melewati boundary, tetapi energi dapat berpindah dalam bentuk heat atau work.";
+
+        massFlow.textContent =
+            "✕ MASS CANNOT CROSS";
+
+        massFlow.className =
+            "mass-flow flow-blocked";
+
+        energyFlow.textContent =
+            "→ ENERGY CAN CROSS";
+
+        energyFlow.className =
+            "energy-flow flow-allowed";
+    }
+
+
+    /* ISOLATED SYSTEM */
+
+    else if (type === "isolated") {
+
+        buttons[2].classList.add("active");
+
+        title.textContent = "Isolated System";
+
+        description.textContent =
+            "Tidak ada massa maupun energi yang dapat melewati boundary system.";
+
+        massFlow.textContent =
+            "✕ MASS CANNOT CROSS";
+
+        massFlow.className =
+            "mass-flow flow-blocked";
+
+        energyFlow.textContent =
+            "✕ ENERGY CANNOT CROSS";
+
+        energyFlow.className =
+            "energy-flow flow-blocked";
+    }
+
+}
+
+</script>
+
+</html>

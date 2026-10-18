@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Quiz | ThermoLearn
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <div id="site-nav"></div>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <div class="kicker">
+                Knowledge Check
+            </div>
+
+            <h1>
+                Thermo Challenge.
+            </h1>
+
+            <p>
+
+                Jawab pertanyaan,
+                lihat pembahasan,
+                dan ukur seberapa jauh
+                pemahamanmu.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="lesson">
+
+
+                <div
+                    style="
+                    display:flex;
+                    justify-content:space-between;
+                    gap:15px;
+                    align-items:center;
+                    ">
+
+                    <span
+                        class="badge"
+                        id="counter">
+
+                        Question 1 / 5
+
+                    </span>
+
+
+                    <span
+                        class="gold"
+                        id="scoreTop">
+
+                        Score: 0
+
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="quizArea"
+                    style="margin-top:25px">
+
+                </div>
+
+
+                <button
+                    class="btn btn-gold"
+                    id="nextBtn"
+                    style="margin-top:15px">
+
+                    Check Answer →
+
+                </button>
+
+
+                <div
+                    id="quizFeedback">
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div id="site-footer"></div>
+
+
+    <script src="app.js"></script>
+
+
+    <script>
+
+        renderNav("quiz.html");
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                const questions = [
+
+
+                    {
+
+                        q:
+                        "Bagian alam semesta yang dipilih untuk dianalisis disebut...",
+
+                        answers: [
+                            "Surroundings",
+                            "System",
+                            "Boundary",
+                            "Universe"
+                        ],
+
+                        correct: 1,
+
+                        explanation:
+                        "System adalah bagian yang kita pilih untuk dianalisis."
+
+                    },
+
+
+                    {
+
+                        q:
+                        "Pada closed system, apa yang tidak melewati boundary?",
+
+                        answers: [
+                            "Energy",
+                            "Heat",
+                            "Mass",
+                            "Work"
+                        ],
+
+                        correct: 2,
+
+                        explanation:
+                        "Closed system tidak mengizinkan perpindahan mass, tetapi energy dapat berpindah."
+
+                    },
+
+
+                    {
+
+                        q:
+                        "Persamaan First Law untuk closed system pada konvensi kita adalah...",
+
+                        answers: [
+                            "ΔU = Q + W",
+                            "ΔU = Q − W",
+                            "ΔU = W − Q",
+                            "ΔU = QW"
+                        ],
+
+                        correct: 1,
+
+                        explanation:
+                        "Dengan W sebagai work done by the system, ΔU = Q − W."
+
+                    },
+
+
+                    {
+
+                        q:
+                        "Jika Q = 500 kJ dan W = 200 kJ, maka ΔU = ...",
+
+                        answers: [
+                            "200 kJ",
+                            "300 kJ",
+                            "500 kJ",
+                            "700 kJ"
+                        ],
+
+                        correct: 1,
+
+                        explanation:
+                        "ΔU = 500 − 200 = 300 kJ."
+
+                    },
+
+
+                    {
+
+                        q:
+                        "Dalam saturated mixture, nilai quality x berada pada rentang...",
+
+                        answers: [
+                            "x < 0",
+                            "0 ≤ x ≤ 1",
+                            "x > 1",
+                            "Selalu x = 1"
+                        ],
+
+                        correct: 1,
+
+                        explanation:
+                        "Quality didefinisikan sebagai vapor mass fraction pada saturated mixture, dari 0 sampai 1."
+
+                    }
+
+                ];
+
+
+                let currentQuestion = 0;
+
+                let score = 0;
+
+                let answered = false;
+
+
+                const quizArea =
+                    document.getElementById(
+                        "quizArea"
+                    );
+
+
+                const counter =
+                    document.getElementById(
+                        "counter"
+                    );
+
+
+                const scoreTop =
+                    document.getElementById(
+                        "scoreTop"
+                    );
+
+
+                const nextBtn =
+                    document.getElementById(
+                        "nextBtn"
+                    );
+
+
+                const feedback =
+                    document.getElementById(
+                        "quizFeedback"
+                    );
+
+
+                function renderQuestion() {
+
+                    answered = false;
+
+
+                    const question =
+                        questions[
+                            currentQuestion
+                        ];
+
+
+                    counter.textContent =
+                        `Question ${
+                            currentQuestion + 1
+                        } / ${
+                            questions.length
+                        }`;
+
+
+                    scoreTop.textContent =
+                        `Score: ${score}`;
+
+
+                    quizArea.innerHTML = `
+
+                        <h2>
+                            ${question.q}
+                        </h2>
+
+                        ${question.answers
+                            .map(
+                                (answer, index) => `
+
+                                    <button
+                                        class="quiz-option"
+                                        data-index="${index}">
+
+                                        <b>
+                                            ${String.fromCharCode(
+                                                65 + index
+                                            )}.
+                                        </b>
+
+                                        ${answer}
+
+                                    </button>
+
+                                `
+                            )
+                            .join("")}
+
+                    `;
+
+
+                    feedback.innerHTML = "";
+
+
+                    nextBtn.textContent =
+                        "Check Answer →";
+
+
+                    document
+                        .querySelectorAll(
+                            ".quiz-option"
+                        )
+                        .forEach(button => {
+
+
+                            button.onclick =
+                                () => {
+
+
+                                    if (
+                                        answered
+                                    ) {
+                                        return;
+                                    }
+
+
+                                    answered = true;
+
+
+                                    const selected =
+                                        Number(
+                                            button.dataset
+                                                .index
+                                        );
+
+
+                                    if (
+                                        selected ===
+                                        question.correct
+                                    ) {
+
+                                        score++;
+
+
+                                        button
+                                            .classList
+                                            .add(
+                                                "correct"
+                                            );
+
+
+                                        feedback.innerHTML = `
+
+                                            <div
+                                                class="result"
+                                                style="margin-top:15px">
+
+                                                <b>
+                                                    Correct!
+                                                </b>
+
+                                                <br>
+
+                                                ${
+                                                    question
+                                                        .explanation
+                                                }
+
+                                            </div>
+
+                                        `;
+
+                                    }
+
+                                    else {
+
+                                        button
+                                            .classList
+                                            .add(
+                                                "wrong"
+                                            );
+
+
+                                        document
+                                            .querySelectorAll(
+                                                ".quiz-option"
+                                            )[
+                                                question.correct
+                                            ]
+                                            .classList
+                                            .add(
+                                                "correct"
+                                            );
+
+
+                                        feedback.innerHTML = `
+
+                                            <div
+                                                class="result"
+                                                style="margin-top:15px">
+
+                                                <b>
+                                                    Belum tepat.
+                                                </b>
+
+                                                <br>
+
+                                                ${
+                                                    question
+                                                        .explanation
+                                                }
+
+                                            </div>
+
+                                        `;
+
+                                    }
+
+
+                                    scoreTop.textContent =
+                                        `Score: ${score}`;
+
+
+                                    nextBtn.textContent =
+                                        currentQuestion ===
+                                        questions.length - 1
+
+                                        ? "See Final Score →"
+
+                                        : "Next Question →";
+
+                                };
+
+                        });
+
+                }
+
+
+                nextBtn.onclick = () => {
+
+
+                    if (!answered) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        currentQuestion <
+                        questions.length - 1
+                    ) {
+
+                        currentQuestion++;
+
+                        renderQuestion();
+
+                        return;
+
+                    }
+
+
+                    const percentage =
+                        Math.round(
+                            score /
+                            questions.length *
+                            100
+                        );
+
+
+                    quizArea.innerHTML = `
+
+                        <div
+                            style="text-align:center">
+
+                            <div class="readout">
+
+                                ${percentage}%
+
+                            </div>
+
+                            <h2>
+
+                                ${
+                                    percentage >= 80
+                                        ? "Excellent work."
+                                        : percentage >= 60
+                                        ? "Good progress."
+                                        : "Keep practicing."
+                                }
+
+                            </h2>
+
+                            <p>
+
+                                Kamu menjawab
+                                ${score}
+                                dari
+                                ${questions.length}
+                                soal dengan benar.
+
+                            </p>
+
+                        </div>
+
+                    `;
+
+
+                    feedback.innerHTML = `
+
+                        <div class="result">
+
+                            ${
+                                percentage >= 80
+
+                                    ? "Kamu sudah punya fondasi yang kuat. Coba simulation dan properties untuk memperdalam intuisi fisik."
+
+                                    : "Ulangi Learn dan Calculator, lalu coba quiz lagi."
+                            }
+
+                        </div>
+
+                    `;
+
+
+                    nextBtn.style.display =
+                        "none";
+
+
+                    markVisited("quiz");
+
+                };
+
+
+                renderQuestion();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

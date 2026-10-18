@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>First Law of Thermodynamics | ThermoLearn</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8fc;
+            color: #172033;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 75px;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 8%;
+
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #2563eb;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 75px 8%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #ffffff
+                );
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .breadcrumb a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            color: #64748b;
+            font-size: 18px;
+            max-width: 750px;
+        }
+
+        /* CONTENT */
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.04);
+        }
+
+        .number {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .section h3 {
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        /* FORMULA */
+
+        .formula-box {
+            background: #172033;
+            color: white;
+
+            padding: 35px;
+
+            border-radius: 16px;
+
+            text-align: center;
+
+            margin: 25px 0;
+        }
+
+        .formula {
+            font-size: 38px;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .formula-note {
+            color: #cbd5e1;
+            margin-top: 8px;
+        }
+
+        /* ENERGY FLOW */
+
+        .energy-flow {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            gap: 20px;
+
+            margin-top: 30px;
+        }
+
+        .energy-box {
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .heat-box {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+        }
+
+        .system-box {
+            background: #eff6ff;
+            border: 2px solid #2563eb;
+        }
+
+        .work-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .energy-box strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 28px;
+            color: #2563eb;
+        }
+
+        /* SIGN CONVENTION */
+
+        .sign-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .sign-card {
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .sign-card h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        /* EXAMPLE */
+
+        .example {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+
+        .example-step {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+
+        .example-step strong {
+            color: #1e3a8a;
+        }
+
+        /* INTERACTIVE */
+
+        .interactive {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .input-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .input-card label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .input-card small {
+            color: #64748b;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-card input {
+            width: 100%;
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            font-size: 16px;
+        }
+
+        .calculate {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .calculate:hover {
+            background: #1d4ed8;
+        }
+
+        .interactive-result {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+
+        .big-result {
+            font-size: 38px;
+            color: #2563eb;
+            font-weight: bold;
+            margin: 10px 0 20px;
+        }
+
+        .calculation {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            font-family: monospace;
+        }
+
+        /* TAKEAWAYS */
+
+        .takeaways {
+            background: #172033;
+            color: white;
+        }
+
+        .takeaways h2 {
+            color: white;
+        }
+
+        .takeaways li {
+            color: #dbeafe;
+            margin-bottom: 10px;
+        }
+
+        /* NAV BUTTONS */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .secondary {
+            background: white;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #172033;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 750px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .energy-flow {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .sign-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section,
+            .interactive {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body><script>
+
+function calculateEnergy() {
+
+    let Q = parseFloat(
+        document.getElementById("heatInput").value
+    );
+
+    let W = parseFloat(
+        document.getElementById("workInput").value
+    );
+
+    if (isNaN(Q) || isNaN(W)) {
+
+        alert("Masukkan nilai Heat (Q) dan Work (W) terlebih dahulu.");
+
+        return;
+    }
+
+    let deltaU = Q - W;
+
+    document.getElementById("energyResult").style.display = "block";
+
+    document.getElementById("deltaU").textContent =
+        deltaU.toFixed(2) + " kJ";
+
+    document.getElementById("energyCalculation").innerHTML =
+        "ΔU = Q − W<br><br>" +
+        "ΔU = " + Q + " − " + W + "<br><br>" +
+        "ΔU = " + deltaU.toFixed(2) + " kJ";
+
+    if (deltaU > 0) {
+
+        document.getElementById("energyInterpretation").textContent =
+            "Internal energy meningkat karena heat yang masuk lebih besar daripada work yang dilakukan oleh system.";
+
+    } else if (deltaU < 0) {
+
+        document.getElementById("energyInterpretation").textContent =
+            "Internal energy menurun karena work yang dilakukan oleh system lebih besar daripada heat yang masuk.";
+
+    } else {
+
+        document.getElementById("energyInterpretation").textContent =
+            "Internal energy tidak berubah karena heat dan work memiliki nilai yang sama.";
+
+    }
+
+}
+
+</script>
+
+</body><script>
+
+function calculateEnergy() {
+
+    let Q = parseFloat(
+        document.getElementById("heatInput").value
+    );
+
+    let W = parseFloat(
+        document.getElementById("workInput").value
+    );
+
+    if (isNaN(Q) || isNaN(W)) {
+        alert("Masukkan nilai Heat (Q) dan Work (W) terlebih dahulu.");
+        return;
+    }
+
+    let deltaU = Q - W;
+
+    document.getElementById("energyResult").style.display = "block";
+
+    document.getElementById("deltaU").textContent =
+        deltaU.toFixed(2) + " kJ";
+
+    document.getElementById("energyCalculation").innerHTML =
+        "ΔU = Q − W<br><br>" +
+        "ΔU = " + Q + " − " + W + "<br><br>" +
+        "ΔU = " + deltaU.toFixed(2) + " kJ";
+
+    if (deltaU > 0) {
+
+        document.getElementById("energyInterpretation").textContent =
+            "Internal energy meningkat karena heat yang masuk lebih besar daripada work yang dilakukan oleh system.";
+
+    } else if (deltaU < 0) {
+
+        document.getElementById("energyInterpretation").textContent =
+            "Internal energy menurun karena work yang dilakukan oleh system lebih besar daripada heat yang masuk.";
+
+    } else {
+
+        document.getElementById("energyInterpretation").textContent =
+            "Internal energy tidak berubah karena heat dan work memiliki nilai yang sama.";
+
+    }
+
+}
+
+</script>
+
+</html>
+
+
+    <!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        ThermoLearn
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="learn.html">Learn</a>
+        </li>
+
+        <li>
+            <a href="simulation.html">Simulation</a>
+        </li>
+
+        <li>
+            <a href="calculator.html">Calculator</a>
+        </li>
+
+        <li>
+            <a href="quiz.html">Quiz</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="breadcrumb">
+
+                <a href="learn.html">
+                    Learn
+                </a>
+
+                →
+
+                Module 02
+
+            </div>
+
+            <h1>
+
+                First Law of
+                <span>Thermodynamics</span>
+
+            </h1>
+
+            <p>
+
+                Memahami hubungan antara heat,
+                work, dan perubahan internal energy
+                berdasarkan prinsip kekekalan energi.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main>
+
+
+        <!-- OBJECTIVES -->
+
+        <section class="section">
+
+            <div class="number">
+                BEFORE YOU START
+            </div>
+
+            <h2>
+                Learning Objectives
+            </h2>
+
+            <p>
+                Setelah mempelajari module ini,
+                kamu diharapkan mampu:
+            </p>
+
+            <ul>
+
+                <li>
+                    Menjelaskan prinsip First Law of Thermodynamics.
+                </li>
+
+                <li>
+                    Menjelaskan hubungan heat, work,
+                    dan internal energy.
+                </li>
+
+                <li>
+                    Menggunakan persamaan ΔU = Q − W.
+                </li>
+
+                <li>
+                    Menentukan tanda positif dan negatif
+                    pada heat dan work.
+                </li>
+
+                <li>
+                    Menyelesaikan perhitungan sederhana
+                    energy balance.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- SECTION 01 -->
+
+        <section class="section">
+
+            <div class="number">
+                01
+            </div>
+
+            <h2>
+                The First Law
+            </h2>
+
+            <p>
+
+                First Law of Thermodynamics merupakan
+                penerapan prinsip kekekalan energi
+                pada sistem thermodynamic.
+
+            </p>
+
+            <p>
+
+                Energi tidak dapat diciptakan atau
+                dimusnahkan. Energi hanya dapat
+                ditransfer atau diubah bentuknya.
+
+            </p>
+
+            <div class="formula-box">
+
+                <div class="formula">
+                    ΔU = Q − W
+                </div>
+
+                <div class="formula-note">
+                    Change in Internal Energy = Heat − Work
+                </div>
+
+            </div>
+
+            <p>
+
+                Dalam persamaan ini, ΔU menyatakan
+                perubahan internal energy, Q menyatakan
+                heat yang ditransfer ke system, dan W
+                menyatakan work yang dilakukan oleh system.
+
+            </p>
+
+        </section>
+
+
+        <!-- SECTION 02 -->
+
+        <section class="section">
+
+            <div class="number">
+                02
+            </div>
+
+            <h2>
+                Energy Interaction
+            </h2>
+
+            <p>
+
+                Energi dapat berpindah melintasi boundary
+                system melalui beberapa mekanisme.
+                Dalam konteks dasar First Law, dua bentuk
+                transfer energi yang utama adalah heat dan work.
+
+            </p>
+
+            <div class="energy-flow">
+
+                <div class="energy-box heat-box">
+
+                    <strong>
+                        HEAT (Q)
+                    </strong>
+
+                    Energy transferred
+                    due to temperature difference.
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+                <div class="energy-box system-box">
+
+                    <strong>
+                        SYSTEM
+                    </strong>
+
+                    Internal Energy (U)
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+                <div class="energy-box work-box">
+
+                    <strong>
+                        WORK (W)
+                    </strong>
+
+                    Energy transfer associated
+                    with force and displacement.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 03 -->
+
+        <section class="section">
+
+            <div class="number">
+                03
+            </div>
+
+            <h2>
+                Sign Convention
+            </h2>
+
+            <p>
+
+                Salah satu bagian penting dalam perhitungan
+                thermodynamics adalah menentukan tanda
+                positif atau negatif.
+
+            </p>
+
+            <div class="sign-grid">
+
+                <div class="sign-card">
+
+                    <h3>
+                        Heat
+                    </h3>
+
+                    <p>
+
+                        <strong>Q > 0</strong>
+
+                        Jika heat masuk ke system.
+
+                    </p>
+
+                    <p>
+
+                        <strong>Q < 0</strong>
+
+                        Jika heat keluar dari system.
+
+                    </p>
+
+                </div>
+
+
+                <div class="sign-card">
+
+                    <h3>
+                        Work
+                    </h3>
+
+                    <p>
+
+                        <strong>W > 0</strong>
+
+                        Jika work dilakukan oleh system.
+
+                    </p>
+
+                    <p>
+
+                        <strong>W < 0</strong>
+
+                        Jika work dilakukan pada system.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 04 -->
+
+        <section class="section example">
+
+            <div class="number">
+                04
+            </div>
+
+            <h2>
+                Worked Example
+            </h2>
+
+            <p>
+
+                Sebuah system menerima heat sebesar
+                <strong>500 kJ</strong> dan melakukan
+                work sebesar <strong>200 kJ</strong>.
+                Tentukan perubahan internal energy.
+
+            </p>
+
+            <div class="example-step">
+
+                <strong>
+                    Step 1 — Identify the values
+                </strong>
+
+                <p>
+                    Q = 500 kJ
+                </p>
+
+                <p>
+                    W = 200 kJ
+                </p>
+
+            </div>
+
+            <div class="example-step">
+
+                <strong>
+                    Step 2 — Apply the First Law
+                </strong>
+
+                <p>
+                    ΔU = Q − W
+                </p>
+
+            </div>
+
+            <div class="example-step">
+
+                <strong>
+                    Step 3 — Calculate
+                </strong>
+
+                <p>
+                    ΔU = 500 − 200
+                </p>
+
+                <p>
+                    <strong>
+                        ΔU = 300 kJ
+                    </strong>
+                </p>
+
+            </div>
+
+            <div class="example-step">
+
+                <strong>
+                    Interpretation
+                </strong>
+
+                <p>
+
+                    Karena ΔU bernilai positif,
+                    internal energy system meningkat
+                    sebesar 300 kJ.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERACTIVE ENERGY BALANCE -->
+
+        <section class="interactive">
+
+            <div class="number">
+                INTERACTIVE PRACTICE
+            </div>
+
+            <h2>
+                Energy Balance Calculator
+            </h2>
+
+            <p>
+
+                Masukkan nilai heat dan work.
+                ThermoLearn akan menghitung perubahan
+                internal energy secara otomatis.
+
+            </p>
+
+
+            <div class="controls">
+
+                <div class="input-card">
+
+                    <label>
+                        Heat (Q)
+                    </label>
+
+                    <small>
+                        Gunakan nilai positif jika heat
+                        masuk ke system.
+                    </small>
+
+                    <input
+                        type="number"
+                        id="heatInput"
+                        placeholder="Example: 500"
+                    >
+
+                </div>
+
+
+                <div class="input-card">
+
+                    <label>
+                        Work (W)
+                    </label>
+
+                    <small>
+                        Gunakan nilai positif jika work
+                        dilakukan oleh system.
+                    </small>
+
+                    <input
+                        type="number"
+                        id="workInput"
+                        placeholder="Example: 200"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="calculate"
+                onclick="calculateEnergy()"
+            >
+
+                Calculate ΔU
+
+            </button>
+
+
+            <div
+                class="interactive-result"
+                id="energyResult"
+            >
+
+                <h3>
+                    Result
+                </h3>
+
+                <div
+                    class="big-result"
+                    id="deltaU"
+                >
+                    0 kJ
+                </div>
+
+                <div
+                    class="calculation"
+                    id="energyCalculation"
+                >
+                </div>
+
+                <p
+                    id="energyInterpretation"
+                >
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 05 -->
+
+        <section class="section">
+
+            <div class="number">
+                05
+            </div>
+
+            <h2>
+                Energy Balance
+            </h2>
+
+            <p>
+
+                First Law dapat dipandang sebagai
+                energy balance. Perubahan energi
+                yang tersimpan di dalam

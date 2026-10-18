@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Learn | ThermoLearn
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <div id="site-nav"></div>
+
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <div class="kicker">
+                Module 01 • Fundamentals
+            </div>
+
+            <h1>
+                Think in Systems.
+            </h1>
+
+            <p>
+
+                Dasar termodinamika yang perlu
+                kamu kuasai sebelum masuk ke
+                hukum-hukum dan aplikasi.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+
+            <div class="lesson">
+
+                <span class="badge">
+                    01 • System
+                </span>
+
+                <h2>
+                    Apa itu sistem termodinamika?
+                </h2>
+
+                <p>
+
+                    Sistem adalah bagian dari alam
+                    semesta yang kita pilih untuk
+                    dianalisis. Segala sesuatu di luar
+                    sistem disebut surroundings.
+
+                </p>
+
+                <div class="formula">
+
+                    System + Surroundings = Universe
+
+                </div>
+
+                <h3>
+                    Boundary
+                </h3>
+
+                <p>
+
+                    Boundary adalah batas yang
+                    memisahkan sistem dari lingkungan.
+                    Boundary bisa nyata seperti dinding
+                    tangki atau imajiner seperti
+                    permukaan kontrol.
+
+                </p>
+
+            </div>
+
+
+            <div class="lesson">
+
+                <span class="badge">
+                    02 • Classification
+                </span>
+
+                <h2>
+                    Closed, Open, dan Isolated System
+                </h2>
+
+                <div class="grid grid-3">
+
+
+                    <div class="card">
+
+                        <h3>
+                            Closed System
+                        </h3>
+
+                        <p>
+
+                            Mass tidak melewati boundary,
+                            tetapi energi dapat berpindah.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Open System
+                        </h3>
+
+                        <p>
+
+                            Mass dan energi dapat melewati
+                            control volume.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Isolated System
+                        </h3>
+
+                        <p>
+
+                            Tidak ada perpindahan mass
+                            maupun energi dengan
+                            surroundings.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="lesson">
+
+                <span class="badge">
+                    03 • State
+                </span>
+
+                <h2>
+                    State, Property, dan Process
+                </h2>
+
+                <p>
+
+                    <b>State</b> adalah kondisi sistem
+                    pada saat tertentu.
+
+                    <b>Property</b> adalah karakteristik
+                    yang dapat diukur, seperti P, T,
+                    V, u, h, dan s.
+
+                    <b>Process</b> adalah perubahan
+                    dari satu state ke state lainnya.
+
+                </p>
+
+
+                <div class="interactive">
+
+                    <h3>
+                        Quick Check
+                    </h3>
+
+                    <p>
+
+                        Jika temperatur naik dari
+                        300 K menjadi 400 K,
+                        apakah sistem mengalami
+                        perubahan state?
+
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="btn btn-gold"
+                        onclick="
+                        document.getElementById('check').textContent =
+                        'Benar. Karena property state berubah, kondisi sistem juga berubah.';
+                        markVisited('fundamentals');
+                        ">
+
+                        Check Answer
+
+                    </button>
+
+
+                    <div
+                        id="check"
+                        class="result">
+
+                        Klik tombol untuk
+                        melihat pembahasan.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="callout">
+
+                <h2>
+                    Next: Properties
+                </h2>
+
+                <p>
+
+                    Sekarang kamu sudah tahu bahasa
+                    dasar termodinamika. Lanjutkan
+                    dengan properties dan phase states.
+
+                </p>
+
+                <a
+                    class="btn btn-gold"
+                    href="properties.html">
+
+                    Explore Properties →
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <div id="site-footer"></div>
+
+
+    <script src="app.js"></script>
+
+    <script>
+        renderNav("learn.html");
+    </script>
+
+</body>
+
+</html>
